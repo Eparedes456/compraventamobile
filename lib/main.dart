@@ -1,4 +1,5 @@
 import 'package:appventas/pages/Inventario/InventarioPage.dart';
+import 'package:appventas/pages/perfil/PerfilPage.dart';
 import 'package:appventas/pages/principal/PrincipalPage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: InventarioPage()
+      home: PerfilPage()
     );
   }
 }

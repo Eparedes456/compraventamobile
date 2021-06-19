@@ -21,7 +21,7 @@ class InventarioPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding:  EdgeInsets.all(8.0),
+              padding:  EdgeInsets.only(left: 12,right: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -167,7 +167,7 @@ class InventarioPage extends StatelessWidget {
                         itemBuilder: (context,i){
                           return Card(
                             child: Padding(
-                              padding: EdgeInsets.all(8),
+                              padding: EdgeInsets.only(top:8,bottom: 8,left: 12,right: 12),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
@@ -177,6 +177,7 @@ class InventarioPage extends StatelessWidget {
                                     color: Colors.black,
                                   ),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text('nombre producto'),
                                       Text('12 disponible'),
@@ -201,15 +202,18 @@ class InventarioPage extends StatelessWidget {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: (){
           Navigator.push(
             context,
             MaterialPageRoute(builder: (BuildContext context) => NuevoProductoPage()));
           
         },
-        child: Text('Crear producto'),
+        icon: Icon(Icons.add),
+        label: Text('Crear producto'),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      
       
     );
   }

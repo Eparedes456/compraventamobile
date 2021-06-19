@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class NuevoProductoPage extends StatelessWidget {
   const NuevoProductoPage({ Key key }) : super(key: key);
@@ -50,21 +51,33 @@ class NuevoProductoPage extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text('Codigo de barras'),
-                                    Container(
-                                      height: 45,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(15)
-                                      ),
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text('Escanea aqui'),
-                                            Icon(Icons.qr_code_scanner_rounded)
-                                          ],
+                                    GestureDetector(
+                                      onTap: ()async{
+                                        //print('hola');
+                                        final barcode = await FlutterBarcodeScanner.scanBarcode(
+                                          "#ff6666",
+                                          "Cancel",
+                                          true, 
+                                          ScanMode.BARCODE,
+                                        );
+                                        print(barcode); 
+                                      },
+                                      child: Container(
+                                        height: 45,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.grey),
+                                          borderRadius: BorderRadius.circular(15)
+                                        ),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text('Escanea aqui'),
+                                              Icon(Icons.qr_code_scanner_rounded)
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -249,9 +262,23 @@ class NuevoProductoPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  SizedBox(height: 12,),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30,right:30),
+                        child: Container(
+                          color: Colors.blue,
+                          width: double.infinity,
+                          child: MaterialButton(
+                            onPressed: (){},
+                            child: Text('Crear producto'),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 12,)
                           ],
                         ),
-                      )
+                      ),
+                      
                       
                     ],
                   ),
@@ -263,6 +290,7 @@ class NuevoProductoPage extends StatelessWidget {
           ],
         ),
       ),
+      
       
     );
   }
