@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+import 'package:math_expressions/math_expressions.dart';
 
-class PerfilPage extends StatelessWidget {
+class PerfilPage extends StatefulWidget {
   const PerfilPage({ Key key }) : super(key: key);
+
+  @override
+  _PerfilPageState createState() => _PerfilPageState();
+}
+
+class _PerfilPageState extends State<PerfilPage> {
+  @override
+  void initState() { 
+    this.sumar();
+    super.initState();
+    
+  }
+
+  sumar(){
+    Parser p = Parser();
+    Expression exp = p.parse('5.1+2');
+    print(exp); //( 5.0 +2.0)
+     String result = exp.evaluate(EvaluationType.REAL, null).toString();  // if context is not available replace it with null.
+    print(result); // 7 esto funcionan con dart v 2.12.3
+  }
 
   @override
   Widget build(BuildContext context) {
